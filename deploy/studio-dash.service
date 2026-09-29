@@ -1,0 +1,10 @@
+[Unit]
+Description=Studio dashboard rebuild
+
+[Service]
+Type=oneshot
+User=studio
+WorkingDirectory=/opt/studio
+Environment=PYTHONPATH=/opt/studio/app
+Environment=HOME=/home/studio
+ExecStart=/opt/studio/venvs/qwen/bin/python -m studio.cli dash

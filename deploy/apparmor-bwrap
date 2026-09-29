@@ -1,0 +1,9 @@
+# Ubuntu 24.04 blocks unprivileged user namespaces; allow them for bubblewrap only (Codex's command sandbox needs it).
+abi <abi/4.0>,
+include <tunables/global>
+
+profile bwrap /usr/bin/bwrap flags=(unconfined) {
+  userns,
+
+  include if exists <local/bwrap>
+}

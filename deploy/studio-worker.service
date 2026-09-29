@@ -1,0 +1,22 @@
+[Unit]
+Description=Studio worker (3 lanes; each post made in its own process; voice and render take turns on the CPU)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=studio
+WorkingDirectory=/opt/studio
+Environment=PYTHONPATH=/opt/studio/app
+Environment=PATH=/home/studio/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=HOME=/home/studio
+ExecStart=/opt/studio/venvs/qwen/bin/python -u -m studio.cli worker
+Restart=always
+RestartSec=3
+# restarts and deploys never kill a post being made: only the dispatcher restarts, job processes carry on
+KillMode=process
+Nice=10
+CPUWeight=20
+IOWeight=20
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Studio tick (publish what's due, start what's coming)
+
+[Service]
+Type=oneshot
+User=studio
+WorkingDirectory=/opt/studio
+Environment=PYTHONPATH=/opt/studio/app
+Environment=PATH=/home/studio/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=HOME=/home/studio
+ExecStart=/opt/studio/venvs/qwen/bin/python -u -m studio.cli tick
+TimeoutStartSec=1800

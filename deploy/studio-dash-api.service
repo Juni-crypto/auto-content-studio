@@ -1,0 +1,15 @@
+[Unit]
+Description=Studio dashboard actions (127.0.0.1:8765, exposed by Caddy behind the dashboard password)
+After=network.target
+
+[Service]
+User=studio
+WorkingDirectory=/opt/studio
+Environment=PYTHONPATH=/opt/studio/app
+Environment=HOME=/home/studio
+ExecStart=/opt/studio/venvs/qwen/bin/python -m studio.webapi
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

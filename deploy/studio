@@ -1,0 +1,5 @@
+#!/bin/bash
+# The studio control panel. Runs as the studio user (sudo -u studio when called from ubuntu).
+if [ "$(id -un)" != "studio" ]; then exec sudo -u studio -H "$0" "$@"; fi
+cd /opt/studio && HOME=/home/studio PYTHONPATH=/opt/studio/app PATH="/home/studio/.local/bin:/usr/local/bin:/usr/bin:/bin" \
+  exec /opt/studio/venvs/qwen/bin/python -m studio.cli "$@"

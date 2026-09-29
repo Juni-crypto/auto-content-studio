@@ -1,0 +1,10 @@
+.env
+secrets/*.json
+!secrets/*.example.json
+*.db
+data/ media/ work/ logs/ dash/ assets/
+tools/kinetic/fonts/ tools/kinetic/emoji/ tools/kinetic/sfx/ tools/kinetic/voices/ tools/kinetic/brands/
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/

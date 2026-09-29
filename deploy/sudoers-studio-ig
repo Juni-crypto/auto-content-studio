@@ -1,0 +1,2 @@
+# The studio user may run the Instagram token helper as studioig, with no arguments (the request comes on stdin).
+studio ALL=(studioig) NOPASSWD: /usr/local/bin/studio-ig ""

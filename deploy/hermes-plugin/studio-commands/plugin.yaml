@@ -1,0 +1,4 @@
+name: studio-commands
+version: "1.0.0"
+description: "Zero-token Telegram commands for the Instagram studio: /freeze, /unfreeze, /studio, /lineup, /approvals, /dash, /queue, /top ID, /today N, /scout [topic]."
+author: "studio"

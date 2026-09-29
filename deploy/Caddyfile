@@ -1,0 +1,26 @@
+studio.example.com {
+	encode gzip
+	handle_path /m/* {
+		root * /opt/studio/media
+		file_server
+	}
+	redir /dash /dash/ 308
+	handle_path /dash/* {
+		basic_auth {
+			owner {$DASH_HASH}
+		}
+		handle /api/* {
+			reverse_proxy 127.0.0.1:8765
+		}
+		handle {
+			root * /opt/studio/dash
+			file_server
+		}
+	}
+	handle {
+		respond "studio" 200
+	}
+	log {
+		output file /var/log/caddy/studio.log
+	}
+}
